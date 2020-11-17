@@ -16,7 +16,6 @@ def callback_odom(msg):
     msg.pose.pose.orientation.y, msg.pose.pose.orientation.z)
     global pitch_angle
     pitch_angle = euler[1]
-    print(pitch_angle)
 
 def callback_img(msg):
     global realsense_msg
@@ -32,7 +31,7 @@ def main():
     sub_odom = rospy.Subscriber("odom_t265_sync", Odometry, callback_odom)
     sub_img = rospy.Subscriber("scan2", LaserScan, callback_img)
     sub_scan = rospy.Subscriber("scan", LaserScan, callback_scan)
-    pub = rospy.Publisher('XD', LaserScan, queue_size=2)
+    pub = rospy.Publisher('adaptive_laserscan', LaserScan, queue_size=2)
 
     rospy.loginfo("main node is running")
 
@@ -41,7 +40,6 @@ def main():
             pub.publish(realsense_msg)
         else:
             pub.publish(laser_msg)
-        print(pitch_angle)
         rate.sleep()
 
 if __name__ == '__main__':

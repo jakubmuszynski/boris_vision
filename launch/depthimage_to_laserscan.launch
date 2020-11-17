@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-
     <!--- Depth image to laser scan -->
     <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" >
         <param name="scan_height" value="3"/>

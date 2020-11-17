@@ -25,7 +25,7 @@ def callback_img(msg):
     camera_constant = (height/2)/math.tan(camera_constant_rad)
 
     val = int(camera_constant*tan_pitch)
-    h = int(height*2/3) #set detection height
+    h = int(height*0.7) #set detection height
 
     img_final = np.zeros((height, width), np.uint16)
     param = h
